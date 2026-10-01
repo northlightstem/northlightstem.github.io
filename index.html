@@ -59,9 +59,9 @@
     /* ============ Nav ============ */
     .nav { position: sticky; top: 0; z-index: 50; background: var(--paper); border-bottom: 1px solid var(--line); }
     .nav-inner { display: flex; align-items: center; gap: 1.5rem; padding: .85rem 0; }
-    .brand { display: inline-flex; align-items: center; gap: .55rem; font-family: var(--font-display); font-weight: 800; font-size: 1.08rem; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; white-space: nowrap; }
-    .brand span { color: var(--accent); }
-.brand-mark { width: 24px; height: 24px; flex: none; border-radius: 50%; }
+    .brand { display: inline-flex; align-items: center; gap: .55rem; flex: none; font-family: var(--font-display); font-weight: 800; font-size: 1.08rem; letter-spacing: -0.01em; color: var(--accent); text-decoration: none; white-space: nowrap; }
+    .brand span { color: var(--teal); }
+    .brand-mark { width: 24px; height: 24px; flex: none; border-radius: 50%; }
     .nav-links { margin-left: auto; display: flex; align-items: center; gap: 1.4rem; }
     .nav-links a { text-decoration: none; color: var(--ink); font-size: .95rem; font-weight: 600; }
     .nav-links a:hover { color: var(--teal); }
@@ -252,7 +252,7 @@
 
     .nav { box-shadow: 0 10px 28px rgba(0, 0, 0, .16); }
     .nav-inner { min-height: 64px; padding-block: .65rem; }
-    .nav-links { width: 100%; margin-left: 0; justify-content: center; gap: clamp(1rem, 2.5vw, 2.25rem); }
+    .nav-links { flex: 1 1 auto; width: auto; margin-left: 0; justify-content: center; gap: clamp(.85rem, 2vw, 1.75rem); }
     .nav-links a { padding: .45rem 0; border-bottom: 2px solid transparent; }
     .nav-links a:hover { border-bottom-color: var(--teal); }
     .nav-links a.nav-cta { margin-left: auto; padding: .68rem 1.2rem; border-bottom: 0; }
@@ -330,7 +330,8 @@
     .foot-grid > div:first-child { max-width: 46rem; }
 
     @media (max-width: 880px) {
-      .nav-inner { justify-content: flex-end; min-height: 58px; }
+      .nav-inner { justify-content: flex-end; min-height: 58px; gap: 1rem; }
+      .brand { margin-right: auto; }
       .nav-links { width: auto; justify-content: initial; }
       .nav-links a { border-bottom: 0; }
       .nav-links a.nav-cta { margin-left: clamp(1.25rem, 4vw, 2.5rem); }
@@ -381,6 +382,10 @@
 
   <header class="nav">
     <div class="wrap nav-inner">
+      <a class="brand" href="#top" aria-label="Northlight STEM, back to top">
+        <img class="brand-mark" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgdmlld0JveD0iMCAwIDY0IDY0IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9Ik5MQyBsaWdodGhvdXNlIGJyYW5kIG1hcms6IGZpbmUtbGluZSBsaWdodGhvdXNlIHdpdGggdHdpbiBiZWFtcyBpbiBicmlnaHQgYW1iZXIgYW5kIHRlYWwsIHdpdGggc3VidGxlIHBpLCBjaGVtaXN0cnkgZmxhc2ssIGFuZCBETkEgaGVsaXggbW90aWZzIj4KICA8dGl0bGU+TkxDIGJlYWNvbi1saW5lIGxpZ2h0aG91c2UgYnJhbmQgbWFyayB3aXRoIHN1YnRsZSBTVEVNIG1vdGlmczwvdGl0bGU+CiAgPCEtLSB0d2luIGJlYW1zIC0tPgogIDxwb2x5Z29uIHBvaW50cz0iMjcuNSwyMC41IDUsMTMgNSwyOCIgZmlsbD0iI2Y1OWUxYiIgb3BhY2l0eT0iMC4yNiIgc3Ryb2tlPSIjZjU5ZTFiIiBzdHJva2Utd2lkdGg9IjEuMiIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogIDxwb2x5Z29uIHBvaW50cz0iMzYuNSwyMC41IDU5LDEzIDU5LDI4IiBmaWxsPSIjZjU5ZTFiIiBvcGFjaXR5PSIwLjI2IiBzdHJva2U9IiNmNTllMWIiIHN0cm9rZS13aWR0aD0iMS4yIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CiAgPCEtLSBzdWJ0bGUgRE5BIGhlbGl4IGluIHRoZSBsZWZ0IGJlYW0gLS0+CiAgPGcgb3BhY2l0eT0iMC44IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiPgogICAgPHBhdGggZD0iTTEyLjksMTYuOCBDMTIuOSwyMC4yIDEwLjIsMjEuMiAxMC4yLDI0LjYiIHN0cm9rZT0iIzEyOTI2OCIgc3Ryb2tlLXdpZHRoPSIwLjkiLz4KICAgIDxwYXRoIGQ9Ik0xMC4yLDE2LjggQzEwLjIsMjAuMiAxMi45LDIxLjIgMTIuOSwyNC42IiBzdHJva2U9IiMxMjkyNjgiIHN0cm9rZS13aWR0aD0iMC45Ii8+CiAgICA8cGF0aCBkPSJNMTAuMywxNy43IEgxMi44IE0xMC40LDIzLjEgSDEyLjciIHN0cm9rZT0iI2Y1OWUxYiIgc3Ryb2tlLXdpZHRoPSIwLjg1Ii8+CiAgPC9nPgogIDwhLS0gc3VidGxlIGNoZW1pc3RyeSBmbGFzayBpbiB0aGUgcmlnaHQgYmVhbSAtLT4KICA8ZyBvcGFjaXR5PSIwLjgiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI+CiAgICA8cGF0aCBkPSJNNTEuMywxOC40IGgxLjQgVjIwIGwyLDMuNiBoLTUuNCBsMiwtMy42IFoiIHN0cm9rZT0iIzEyOTI2OCIgc3Ryb2tlLXdpZHRoPSIwLjkiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICAgIDxwYXRoIGQ9Ik01MC40LDIyLjIgaDMuMiIgc3Ryb2tlPSIjZjU5ZTFiIiBzdHJva2Utd2lkdGg9IjAuODUiLz4KICA8L2c+CiAgPCEtLSByb29mIC0tPgogIDxwYXRoIGQ9Ik0yNiAxNy41IEwzMiAxMi41IEwzOCAxNy41IFoiIGZpbGw9IiMwZjI0MWUiLz4KICA8IS0tIGxhbnRlcm4gLS0+CiAgPHJlY3QgeD0iMjgiIHk9IjE3LjUiIHdpZHRoPSI4IiBoZWlnaHQ9IjciIHJ4PSIxLjIiIGZpbGw9IiNmNTllMWIiLz4KICA8Y2lyY2xlIGN4PSIzMiIgY3k9IjIxIiByPSIxLjgiIGZpbGw9IiNmZmZiZTgiLz4KICA8IS0tIHRvd2VyIC0tPgogIDxwYXRoIGQ9Ik0yNi41IDUyIEwyOS41IDI0LjUgSDM0LjUgTDM3LjUgNTIgWiIgZmlsbD0iI2ZkZmNmNyIgc3Ryb2tlPSIjMGYyNDFlIiBzdHJva2Utd2lkdGg9IjIuNSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogIDwhLS0gdGVhbCBiYW5kIC0tPgogIDxwYXRoIGQ9Ik0yNy43IDM4LjUgTDM2LjMgMzguNSBMMzYuOSA0My41IEwyNy4xIDQzLjUgWiIgZmlsbD0iIzEyOTI2OCIvPgogIDwhLS0gcGkgb24gdGhlIHRlYWwgYmFuZDogdGhlIGFjdHVhbCBtYXRoIHN5bWJvbCAtLT4KICA8dGV4dCB4PSIzMiIgeT0iNDIuODUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLCAnVGltZXMgTmV3IFJvbWFuJywgc2VyaWYiIGZvbnQtc3R5bGU9Iml0YWxpYyIgZm9udC1zaXplPSI0LjkiIGZpbGw9IiNmZGZjZjciPs+APC90ZXh0PgogIDwhLS0gZG9vciAtLT4KICA8cGF0aCBkPSJNMzAuNCA1MiBWNDcuNCBhMS42IDEuNiAwIDAgMSAzLjIgMCBWNTIgWiIgZmlsbD0iIzBmMjQxZSIvPgogIDwhLS0gYmFzZSAtLT4KICA8cmVjdCB4PSIyNC41IiB5PSI1MiIgd2lkdGg9IjE1IiBoZWlnaHQ9IjIuNiIgcng9IjEuMyIgZmlsbD0iIzBmMjQxZSIvPgogIDwhLS0gd2F2ZXMgLS0+CiAgPHBhdGggZD0iTTYgNTguNSBxMy41LTMuNSA3IDAgdDcgMCB0NyAwIiBmaWxsPSJub25lIiBzdHJva2U9IiMxMjkyNjgiIHN0cm9rZS13aWR0aD0iMi40IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8cGF0aCBkPSJNMzYgNTguNSBxMy41LTMuNSA3IDAgdDcgMCB0NyAwIiBmaWxsPSJub25lIiBzdHJva2U9IiMxMjkyNjgiIHN0cm9rZS13aWR0aD0iMi40IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8IS0tIGFjY2VudCBkb3QgLS0+CiAgPGNpcmNsZSBjeD0iMTMiIGN5PSIzNyIgcj0iMS4yIiBmaWxsPSIjMTI5MjY4Ii8+Cjwvc3ZnPgo=" alt="" width="24" height="24" />
+        Northlight <span>STEM</span>
+      </a>
       <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu</button>
       <nav class="nav-links" id="navLinks" aria-label="Primary">
         <a href="#services">Services</a>
