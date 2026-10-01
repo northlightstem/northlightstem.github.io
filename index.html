@@ -248,8 +248,26 @@
     .cal-alt { display: none; text-align: center; font-size: .92rem; color: var(--muted); margin: 1rem 0 0; }
     .cal-alt.show { display: block; }
 
+    /* ============ Designer polish ============ */
+    ::selection { background: var(--accent); color: #141003; }
+    .nav { border-top: 3px solid var(--accent); background: color-mix(in srgb, var(--paper) 90%, transparent); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+    .hero { position: relative; overflow: clip; }
+    .hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(620px 400px at 14% 16%, rgba(201,162,39,.10), transparent 65%), radial-gradient(700px 460px at 86% 10%, rgba(70,176,106,.09), transparent 60%); pointer-events: none; }
+    .hero .wrap { position: relative; }
+    .btn-primary { box-shadow: 0 12px 26px -14px rgba(201,162,39,.6); }
+    .btn-primary:hover { transform: translateY(-1px); }
+    .btn-ghost:hover { transform: translateY(-1px); }
+    .program-card { transition: transform .16s ease, border-color .16s ease; }
+    .program-card:hover { transform: translateY(-3px); border-color: var(--accent); }
+    footer { border-top: 1px solid var(--line); }
+    .foot-rule { height: 3px; background: linear-gradient(90deg, transparent, var(--accent) 25%, var(--accent) 75%, transparent); opacity: .5; }
+    main a { text-underline-offset: 3px; }
+    :focus-visible { outline-color: var(--accent); }
+    .to-top { display: inline-block; margin-top: .7rem; font-size: .85rem; font-weight: 700; color: var(--muted); text-decoration: none; }
+    .to-top:hover { color: var(--accent); }
+
     @media (prefers-reduced-motion: reduce) {
-      .btn, .pick, .copy-btn, summary::after { transition: none; }
+      .btn, .pick, .copy-btn, summary::after, .program-card { transition: none; }
     }
   </style>
 </head>
@@ -693,6 +711,7 @@
   </main>
 
   <footer>
+    <div class="foot-rule" aria-hidden="true"></div>
     <div class="wrap foot-grid">
       <div>
         <div class="foot-brand">
@@ -705,6 +724,7 @@
       <div class="foot-small">
         <p style="margin:0 0 .4rem;">Photography: Graduate Programs for Educators · Pexels · NASA (public domain)</p>
         <p style="margin:0;">© 2026 Northlight STEM Consulting · NLC. All rights reserved.</p>
+        <a class="to-top" href="#top">Back to top ↑</a>
       </div>
     </div>
   </footer>
