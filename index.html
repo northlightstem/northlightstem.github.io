@@ -114,6 +114,7 @@
     .sec-label { font-family: var(--font-mono); font-size: .8rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--teal); display: flex; align-items: center; gap: .85rem; margin-bottom: 1.25rem; }
     .sec-label::after { content: ""; height: 1px; background: var(--line); flex: 1; }
     .sec-head { font-size: clamp(1.9rem, 4vw, 2.7rem); font-weight: 800; margin-bottom: .9rem; }
+    .sec-head.nowrap { white-space: nowrap; font-size: clamp(1.45rem, 3.4vw, 2.7rem); }
     .sec-intro { color: var(--muted); font-size: 1.12rem; max-width: 42rem; margin-bottom: 2.5rem; }
 
     /* ============ Services index ============ */
@@ -490,7 +491,7 @@
     <section class="block" id="about">
       <div class="wrap">
         <p class="sec-label">03 · About</p>
-        <h2 class="sec-head">Led by Drew Giese, MPH</h2>
+        <h2 class="sec-head nowrap">Led by Drew Giese, MPH</h2>
         <div class="about-grid" style="margin-top:2rem;">
           <figure class="about-figure" style="margin:0;">
             <div class="frame">
