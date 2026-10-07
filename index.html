@@ -347,11 +347,15 @@
       .nav-links { width: auto; justify-content: initial; }
       .nav-links a { border-bottom: 0; }
       .nav-links a.nav-cta { margin-left: clamp(1.25rem, 4vw, 2.5rem); }
-      .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero-grid { grid-template-columns: minmax(0, 150px) minmax(0, 1fr); gap: 1.25rem; align-items: center; }
       .hero-grid > div:last-child { max-width: 44rem; }
-      .hero-figure { max-width: 24rem; }
-      .hero-figure .tall-img { aspect-ratio: 16 / 10; min-height: 0; max-height: none; object-position: center 59%; }
+      .hero-figure { max-width: 170px; width: 100%; justify-self: start; align-self: start; }
+      .hero-figure .tall-img { aspect-ratio: 3 / 4; min-height: 0; max-height: 240px; object-position: 60% 12%; }
       .hero h1 em { display: inline; }
+      .hero h1 { font-size: clamp(1.9rem, 4.6vw, 2.9rem); line-height: 1.05; margin-bottom: 1rem; }
+      .hero .eyebrow { margin-bottom: .7rem; }
+      .hero-sub { font-size: 1rem; line-height: 1.55; margin-bottom: 1.1rem; }
+      .hero-actions { flex-direction: column; align-items: stretch; gap: .7rem; }
       .creds-inner { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .approach-grid { grid-template-columns: 1fr; }
       .programs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -362,7 +366,7 @@
     @media (max-width: 640px) {
       body { font-size: 1.04rem; }
       .hero { padding-top: 1.5rem; }
-      .hero h1 { font-size: clamp(2.45rem, 12vw, 3.35rem); }
+      .hero h1 { font-size: clamp(1.65rem, 7.5vw, 2.2rem); line-height: 1.08; margin-bottom: .9rem; }
       .hero-sub { font-size: 1.07rem; }
       .hero-actions .btn { width: 100%; }
       .creds-inner { grid-template-columns: 1fr; gap: .9rem; }
