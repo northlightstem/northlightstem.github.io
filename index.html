@@ -1123,6 +1123,24 @@
         void host.offsetWidth;
         host.classList.add('beam-go');
       }
+      /* Recurring sweep: while a section stays in view, sweep again on a
+         randomized 20-40s timer, like a lighthouse passing overhead. */
+      var recOf = new Map();
+      hosts.forEach(function (h) { recOf.set(h, { host: h, visible: false, timer: null }); });
+      function randDelay() { return 20000 + Math.random() * 20000; }
+      function clearTimer(rec) {
+        if (rec.timer) { clearTimeout(rec.timer); rec.timer = null; }
+      }
+      function schedule(rec) {
+        clearTimer(rec);
+        if (reduced || document.hidden || !rec.visible) return;
+        if (rec.host.classList.contains('beam-go')) return;
+        rec.timer = setTimeout(function () {
+          rec.timer = null;
+          if (!rec.visible || document.hidden) return;
+          sweep(rec.host);
+        }, randDelay());
+      }
       hosts.forEach(function (h) {
         var fan = h.querySelector('.beam-fan');
         if (!fan) return;
@@ -1130,16 +1148,30 @@
           if (e.animationName !== 'beamLife') return;
           h.classList.remove('beam-go');
           h.classList.add('beam-rested');
+          var rec = recOf.get(h);
+          if (rec) schedule(rec);
         });
       });
       if ('IntersectionObserver' in window) {
         var io = new IntersectionObserver(function (entries) {
           entries.forEach(function (en) {
-            if (en.isIntersecting) { sweep(en.target); }
-            else if (!en.target.classList.contains('beam-go')) { en.target.classList.remove('beam-rested'); }
+            var rec = recOf.get(en.target);
+            if (en.isIntersecting) {
+              if (rec) rec.visible = true;
+              sweep(en.target);
+            } else {
+              if (rec) { rec.visible = false; clearTimer(rec); }
+              if (!en.target.classList.contains('beam-go')) { en.target.classList.remove('beam-rested'); }
+            }
           });
         }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
         hosts.forEach(function (h) { io.observe(h); });
+        document.addEventListener('visibilitychange', function () {
+          recOf.forEach(function (rec) {
+            if (document.hidden) { clearTimer(rec); }
+            else if (rec.visible) { schedule(rec); }
+          });
+        });
       }
       window.addEventListener('load', function () {
         var hero = document.querySelector('.hero.has-beam');
